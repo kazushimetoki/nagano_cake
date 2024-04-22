@@ -1,0 +1,12 @@
+<h1>Admin::Items#show</h1>
+<div>
+  <%= image_tag @item.get_image %>
+</div>
+<%= form_with model: @cart_item do |f| %>
+  <p>商品名：<%= @item.name %></p>
+  <p>商品説明：<%= @item.introduction %></p>
+  <p>税込価格：<%= @item.price %></p>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.hidden_field :item_id, :value =>@item.id  %>
+  <%= f.submit 'カートに入れる' %>
+<% end %>

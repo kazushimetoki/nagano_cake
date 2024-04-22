@@ -1,0 +1,9 @@
+<div>
+  <h3><%= @costroller.name %></h3>
+  <%= image_tag @costroller.get_profile_image(200,200) %>
+  <% if @costroller == current_costroller %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@costroller.id) %></p>
+  <% end %>
+</div>
+
+<%= render 'items/list', items: @items %>

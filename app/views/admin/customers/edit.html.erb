@@ -1,0 +1,18 @@
+<h1>会員情報編集</h1>
+
+<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+  
+  <h1>氏名：<%= f.text_field :last_name %> <%= f.text_field :first_name %></h1>
+  <h1>フリガナ：<%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></h1>
+  <h1>郵便番号：<%= f.text_field :postal_code %></h1>
+  <h1>住所：<%= f.text_field :address %></h1>
+  <h1>電話番号：<%= f.text_field :telephone_number %></h1>
+  <h1>メールアドレス：<%= f.text_field :email %></h1>
+  <div class="field">
+    
+    <%= f.radio_button :is_active, true %> 有効
+    <%= f.radio_button :is_active, false %> 退会
+  </div>
+
+  <%= f.submit '変更を保存' %>
+<% end %>
