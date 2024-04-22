@@ -1,5 +1,5 @@
 <h1>注文情報確認</h1>
- <% @cart_items.each do |cart_item| %>
+<% @cart_items.each do |cart_item| %>
   <div>
     <%= image_tag cart_item.item.get_image %>
     <p>商品名：<%= cart_item.item.name %></p>
@@ -8,25 +8,24 @@
     <p>小計：<%= cart_item.sub_total %></p>
     <p>合計金額：<%= @total %></p>
     <%# if @cart_item.present? && @cart_item.customer == current_customer %>
-    <%#= #link_to "削除", cart_item_path(cart_item), method: :delete %>
-  <%# end %>
+     <%#= #link_to "削除", cart_item_path(cart_item), method: :delete %>
+    <%# end %>
   </div>
 <% end %>
 <%= @order.shipping_address%>
 <%= form_with model: @order, url: orders_path do |f| %>
- <div>
-  <h2>支払方法</h2>
-   <%= f.hidden_field :total_billing_amount, value: @total %>
-   <%= f.hidden_field :payment_method, value: @order.payment_method %>
-   <%= f.hidden_field :postage, value: 800 %>
-   <%= @order.payment_method_i18n %>
+  <div>
+   <h2>支払方法</h2>
+    <%= f.hidden_field :total_billing_amount, value: @total %>
+    <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.hidden_field :postage, value: 800 %>
+    <%= @order.payment_method_i18n %>
+    
+    <h2>お届け先</h2>
+    <%= @order.full_address %>
+    <%= current_customer.last_name %>
+    
+    <%= f.submit '注文を確定する'%>
    
-   <h2>お届け先</h2>
-   <%= @order.full_address %>
-   <%= current_customer.last_name %>
-   
-   <%= f.submit '注文を確定する'%>
-  
- </div>
- 
- <% end %>
+  </div>
+<% end %>

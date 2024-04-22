@@ -1,10 +1,10 @@
 <h1>Admin::Items#index</h1>
-<%= link_to '＋', new_admin_item_path %>
-<% @items.each do |item| %>
+  <%= link_to '＋', new_admin_item_path %>
+  <% @items.each do |item| %>
   <div>
     <h1>商品ID：<%= item.id %></h1>
     <h2>商品名<%= link_to item.name, admin_item_path(item.id) %></h2>
     <h3>税抜価格：<%= item.price %></h3>
   </div>
-<% end %>
+  <% end %>
 <%= @items %>

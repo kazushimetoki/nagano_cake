@@ -3,17 +3,17 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
- def new
+  def new
    @admins = Admin.new
- end
+  end
   # GET /resource/sign_up
   # def new
   #   super
   # end
- def create
-    @admin = PostImage.new(post_image_params)
-    @post_image.user_id = current_user.id
-    @post_image.save
+  def create
+   @admin = PostImage.new(post_image_params)
+   @post_image.user_id = current_user.id
+   @post_image.save
     redirect_to post_images_path
   end
   # POST /resource

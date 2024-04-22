@@ -1,24 +1,23 @@
 <%= link_to "買い物を続ける", root_path %>
-<% @cart_items.each do |cart_item| %>
- <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
-  <div>
-    <%= image_tag cart_item.item.get_image %>
-    <p>商品名：<%= cart_item.item.name %></p>
-    <p>単価(税込)：<%= cart_item.item.price*1.1 %></p>
-    <p>数量：<%= cart_item.amount %></p>
-    <p>小計：<%= cart_item.sub_total %></p>
-    <p>合計金額：<%= @total %></p>
-    <%# if @cart_item.present? && @cart_item.customer == current_customer %>
-    <%= link_to "削除", cart_item_path(cart_item), method: :delete %>
-    <%= f.select :amount, *[1..10] %>
-    <%= f.submit '変更' %>
-    
-  <%# end %>
-  </div>
- <% end %>
-<% end %>
+  <% @cart_items.each do |cart_item| %>
+   <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+    <div>
+      <%= image_tag cart_item.item.get_image %>
+      <p>商品名：<%= cart_item.item.name %></p>
+      <p>単価(税込)：<%= cart_item.item.price*1.1 %></p>
+      <p>数量：<%= cart_item.amount %></p>
+      <p>小計：<%= cart_item.sub_total %></p>
+      <p>合計金額：<%= @total %></p>
+      <%# if @cart_item.present? && @cart_item.customer == current_customer %>
+       <%= link_to "削除", cart_item_path(cart_item), method: :delete %>
+       <%= f.select :amount, *[1..10] %>
+       <%= f.submit '変更' %>
+      <%# end %>
+    </div>
+   <% end %>
+  <% end %>
 <% if @cart_items.exists? %>
 
-<%= link_to "注文情報入力に進む", new_order_path %>
+  <%= link_to "注文情報入力に進む", new_order_path %>
 <% end %>
 <%= link_to "カートを空にする", destroy_all_cart_item_path, method: :delete %>

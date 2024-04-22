@@ -12,38 +12,40 @@
   <body>
       
   <% if customer_signed_in? %>
-  <nav>
-    <ul>
-     <li><%= link_to "マイページ", customers_mypage_path %></li>
-     <li><%= link_to "商品一覧", items_path %></li>
-     <li><%= link_to "カート", cart_items_path %></li>
-     <li>
-      <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>    
-     </li>
-   </nav>
+    <nav>
+      <ul>
+       <li><%= link_to "マイページ", customers_mypage_path %></li>
+       <li><%= link_to "商品一覧", items_path %></li>
+       <li><%= link_to "カート", cart_items_path %></li>
+       <li>
+        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>    
+       </li>
+      </ul>
+    </nav>
    
   
   <% elsif admin_signed_in? %>
-     <nav>
-      <ul>
-     <li><%= link_to "商品一覧", admin_items_path %></li>
-     <li><%= link_to "会員一覧", admin_customers_path %></li>
-     <li><%= link_to "注文履歴一覧", admin_root_path %></li>
-     <li>
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>    
-    </li>
-    </ul>
-   </nav>
-   <% else %>
-   <nav>
-    <ul>
-     <li><%= link_to "About", homes_about_path %></li>
-     <li><%= link_to "商品一覧", items_path %></li>
-     <li><%= link_to "新規登録", new_customer_registration_path %></li>
-     <li>
-      <%= link_to 'ログイン', customer_session_path %>    
-     </li>
-   </nav>
+    <nav>
+     <ul>
+      <li><%= link_to "商品一覧", admin_items_path %></li>
+      <li><%= link_to "会員一覧", admin_customers_path %></li>
+      <li><%= link_to "注文履歴一覧", admin_root_path %></li>
+      <li>
+       <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>    
+      </li>
+     </ul>
+    </nav>
+  <% else %>
+    <nav>
+     <ul>
+      <li><%= link_to "About", homes_about_path %></li>
+      <li><%= link_to "商品一覧", items_path %></li>
+      <li><%= link_to "新規登録", new_customer_registration_path %></li>
+      <li>
+       <%= link_to 'ログイン', customer_session_path %>    
+      </li>
+     </ul>
+    </nav>
   <% end %>
   
     <%= yield %>
